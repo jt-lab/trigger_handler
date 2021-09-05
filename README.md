@@ -62,7 +62,7 @@ To test whether the trigger is submitted between the stimulus PC and the receivi
 [test_triggers.html](test_triggers.html) is a small HTML file that can be used to test sending triggers. Just open ```test_triggers.html``` and click the buttons to send triggers. 
 
 ### Example with jsPsych: 
-[demo_3_triggers.html](demo_3_triggers.html) is a modified version of the flanker task demo that comes with [jsPsych](https://www.jspsych.org/). Just copy the file into the ```examples/demos``` folder of your jsPsych installation and run it (e.g. via a local [JATOS](https://www.jatos.org). If you look at the source code, you can see that a function (calling ```fetch('http://127.0.0.1:8000/trigger/X')```) is assigned to the ```on_start``` callback of the trials so that a trigger is sent whenever a new trial starts.
+[demo_3_triggers.html](demo_3_triggers.html) is a modified version of the flanker task demo that comes with [jsPsych](https://www.jspsych.org/). Just copy the file into the ```examples/demos``` folder of your jsPsych installation and run it (directly or via a local [JATOS](https://www.jatos.org) server). If you look at the source code, you can see that a function (calling ```fetch('http://127.0.0.1:8000/trigger/X')```) is assigned to the ```on_start``` callback of the trials so that a trigger is sent whenever a new trial starts.
 
 
 ## Integration of triggers in your JavaScript-based experiments
