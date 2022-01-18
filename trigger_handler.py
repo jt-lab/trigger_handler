@@ -9,13 +9,13 @@ app = Flask(__name__)
 
 
 # Configuration:
-LPT_INTERFACE = 0xD050 # Address of the paralell port interface
+LPT_INTERFACE = 0xD050 # Address of the parallel port interface
 HOST = '127.0.0.1' # Defaul is localhost
 PORT = 8000 
 
 
-@app.route('/trigger/<trigger_value>')
-def trigger(trigger_value):
+@app.route('/trigger/parallel/<trigger_value>')
+def parallel_trigger(trigger_value):
 	trigger_value = int(trigger_value)
 
 	try:
