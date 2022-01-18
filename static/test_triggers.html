@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head lang="en">
+  </head>
+  <body>
+    <p>Press the numbered buttons to send triggers ...</p>
+    <label for="trigger-select">Trigger type:</label>
+    <select id="trigger-select" name="trigger">
+      <option value="tcp">TCP</option>
+      <option value="parallel">Parallel Port</option>
+    </select>
+    <button type="button" onClick="trigger(1)">1</button>
+    <button type="button" onClick="trigger(2)">2</button>
+    <button type="button" onClick="trigger(3)">3</button>
+    <button type="button" onClick="trigger(4)">4</button>
+    <button type="button" onClick="trigger(250)">250</button>
+  </body>
+  <script>
+    function trigger(trigger_value){
+      var trigger_type = document.querySelector('#trigger-select').value;
+      fetch(`http://127.0.0.1:8000/trigger/${trigger_type}/${trigger_value}`)
+    }
+  </script>
+</html>
+
+
