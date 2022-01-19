@@ -55,20 +55,22 @@ All the tests and demos described below require that the configuration is correc
 
 ### Testing by manually calling the trigger URL:
 
-To test whether the trigger is submitted between the stimulus PC and the receiving PC, you can try the following: When the trigger server is running, you can enter ```http://127.0.0.1:8000/trigger/X``` (with ```X``` being a number that identifies the trigger) into the address bar of your browser. You should then see the trigger (e.g., by the means described above) on the receiving PC.
+To test whether the trigger is submitted between the stimulus PC and the receiving PC, you can try the following: When the trigger server is running, you can enter ```http://127.0.0.1:8000/trigger/parallel/X``` (with ```X``` being a number that identifies the trigger) into the address bar of your browser. You should then see the trigger (e.g., by the means described above) on the receiving PC.
 
 ### Testing triggers with test_triggers.html:
 
 [test_triggers.html](test_triggers.html) is a small HTML file that can be used to test sending triggers. Just open ```test_triggers.html``` and click the buttons to send triggers. 
 
 ### Example with jsPsych: 
-[demo_3_triggers.html](demo_3_triggers.html) is a modified version of the flanker task demo that comes with [jsPsych](https://www.jspsych.org/). Just copy the file into the ```examples/demos``` folder of your jsPsych installation and run it (directly or via a local [JATOS](https://www.jatos.org) server). If you look at the source code, you can see that a function (calling ```fetch('http://127.0.0.1:8000/trigger/X')```) is assigned to the ```on_start``` callback of the trials so that a trigger is sent whenever a new trial starts.
-
+[static/demo_3_triggers.html](demo_3_triggers.html) is a modified version of the flanker task demo that comes with [jsPsych](https://www.jspsych.org/). Just run it (directly or via a local [JATOS](https://www.jatos.org) server). If you look at the source code, you can see that a function (calling ```fetch('http://127.0.0.1:8000/trigger/parallel/X')```) is assigned to the ```on_start``` callback of the trials so that a trigger is sent whenever a new trial starts.
 
 ## Integration of triggers in your JavaScript-based experiments
 
-The tests and demos described above show how sending triggers can be integrated into your JavaScript-based experiments. In essence, you need to call ```fetch('http://127.0.0.1:8000/trigger/X')``` (with ```X``` being a number that identifies the trigger) at time/event for which you would like to execute the trigger.
+The tests and demos described above show how sending triggers can be integrated into your JavaScript-based experiments. In essence, you need to call ```fetch('http://127.0.0.1:8000/trigger/parallel/X')``` (with ```X``` being a number that identifies the trigger) at time/event for which you would like to execute the trigger.
 
-## Important note: 
+## Notes: 
 
 ```trigger_handler``` was not thoroughly tested yet. Also, you will likely have to make changes to [trigger_handler.py](trigger_handler.py) to adjust it for your needs. Sending triggers in this way relies on the event handling inside the browser and the handling of network traffic on the PC. Consequently, the temporal precision will be rather low (compared to a genuine lab implementation of an experiment), and it still has to be tested how good or bad the timing actually is. Nevertheless, ```trigger_handler``` can hopefully be a starting point for developing specific solutions for several use cases.
+
+
+@jodeleeuw has added the possibility to send triggers via the TCP port. For this, the ```parallel``` in the URL can be replaced with ```tcp```, e.g., ```http://127.0.0.1:8000/trigger/tcp/X```. There is an example in the folder "static".
