@@ -9,13 +9,13 @@ app = Flask(__name__)
 
 
 # Configuration:
-APP_HOST = '127.0.0.1' # Defaul is localhost
+APP_HOST = '127.0.0.1' # Default is localhost
 APP_PORT = 8000 
 
-PARALLEL = False # Whether to open a parallel connection
+PARALLEL = True # Whether to open a parallel connection
 LPT_INTERFACE = 0xD050 # Address of the parallel port interface
 
-TCP = True # Whether to open a TCP connection
+TCP = False # Whether to open a TCP connection
 TCP_HOST = '127.0.0.1'
 TCP_PORT = 50000
 
